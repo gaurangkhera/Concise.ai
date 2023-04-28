@@ -1,28 +1,111 @@
 {% extends 'base.html' %}
 {% block title %}
-    Sign up
+    Login
 {% endblock %}
 {% block content %}
-<br><br><br><br><br><br><br> 
-<center><h1>Sign up</h1></center>
-<form action="/reg" method="post" class="container-fluid w-25">
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-lg text-center">
+    <h1 class="text-2xl font-bold sm:text-3xl">Welcome aboard!</h1>
+
+    <p class="mt-4 text-gray-500">
+      Sign up today!
+    </p>
+  </div>
+
+  <form action="/reg" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
     {{form.hidden_tag()}}
     {{form.csrf_token}}
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      {{form.email(class='form-control')}}
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div>
+      <label for="email" class="sr-only">Username</label>
+
+      <div class="relative">
+        {{form.username(class='w-full rounded-lg border-gray-200 focus:outline-none = p-4 pe-12 text-sm shadow-sm', placeholder='Username')}}
+
+        <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+            />
+          </svg>
+        </span>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Username</label>
-      {{form.username(class='form-control')}}
+    <div>
+      <label for="email" class="sr-only">Email</label>
+
+      <div class="relative">
+        {{form.email(class='w-full rounded-lg border-gray-200 focus:outline-none = p-4 pe-12 text-sm shadow-sm', placeholder='Email')}}
+
+        <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+            />
+          </svg>
+        </span>
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      {{form.password(class='form-control')}}
+    <div>
+      <label for="password" class="sr-only">Password</label>
+
+      <div class="relative">
+        {{form.password(class='w-full rounded-lg focus:outline-none border-gray-200 p-4 pe-12 text-sm shadow-sm', placeholder='Password')}}
+
+        <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+            />
+          </svg>
+        </span>
+      </div>
     </div>
-    {{form.submit(class='btn btn-primary rounded-pill')}}
+
+    <div class="flex items-center justify-between">
+      <p class="text-sm text-gray-500">
+        {% if mess != '' %}
+        <span class="text-red-400">{{mess.replace('.', '')}}.<br></span>
+        {% endif %}
+        No account?
+        <a class="underline" href="/reg">Sign up</a>
+      </p>
+
+      {{form.submit(class='hidden lg:inline-block py-3 px-6 ml-4 bg-green-400 text-sm text-white font-bold rounded-xl transition duration-200')}}
+    </div>
   </form>
-<center>{{mess}}</center>
+</div>
 {% endblock %}
