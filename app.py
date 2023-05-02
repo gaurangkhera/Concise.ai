@@ -9,7 +9,7 @@ import requests
 create_db(app)
 headers = {
 	"content-type": "application/octet-stream",
-	"X-RapidAPI-Key": "188adcc90dmsh2c0204da620cc1cp11c251jsn154284079e2b",
+	"X-RapidAPI-Key": "your-api-key",
 	"X-RapidAPI-Host": "article-extractor-and-summarizer.p.rapidapi.com"
 }
 
