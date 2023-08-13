@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const Summarize = () => {
   const options = {
@@ -33,26 +35,22 @@ const Summarize = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    fetchSummary();
     setLoading(true);
   };
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 mt-24">
       <div className="mx-auto max-w-lg text-center">
         <h1 className="text-2xl font-bold sm:text-3xl">Summarize</h1>
         <p className="mt-4 text-gray-500">Enter a URL from which an article is to be summarized</p>
       </div>
-      <form className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+      <form className="mx-auto mb-0 mt-8 max-w-md space-y-4" onSubmit={handleSubmit}>
         <div>
           <div className="relative">
-            <input
-              className="w-full rounded-lg border-2 border-green-400 focus:outline-none p-2 pe-6 text-sm"
-              type="url"
-              placeholder="Article URL"
-              autoFocus
-              onChange={(e) => setUrl(e.target.value)}
-            />
+            <Input type='url' onChange={(e) => setUrl(e.target.value)} />
             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,14 +70,8 @@ const Summarize = () => {
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-500">It may take 1-2 minutes to summarize your content.</p>
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-green-400 rounded-2xl sm:w-auto sm:mb-0"
-          >
-            Summarize!
-          </button>
+          <p className="text-sm text-gray-500 w-3/4">It may take 1-2 minutes to summarize your content.</p>
+          <Button onClick={handleSubmit}>Summarize</Button>
         </div>
       </form>
 
@@ -87,8 +79,8 @@ const Summarize = () => {
         {/* Skeleton loader while loading */}
         {loading ? (
           <div className="animate-pulse">
-            <div className="h-4 bg-gray-300 rounded mb-2"></div>
-            <div className="h-4 bg-gray-300 rounded"></div>
+            <div className="h-4 bg-gray-800 rounded mb-2"></div>
+            <div className="h-4 bg-gray-800 rounded"></div>
           </div>
         ) : (
           <div>{summary}</div>
