@@ -6,7 +6,7 @@ const Summarize = () => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '6cf1dd4aaamsha5f144d04b376b5p1c0b1djsnf33f189a35d5',
+      'X-RapidAPI-Key': '188adcc90dmsh2c0204da620cc1cp11c251jsn154284079e2b',
       'X-RapidAPI-Host': 'article-extractor-and-summarizer.p.rapidapi.com',
     },
   };
